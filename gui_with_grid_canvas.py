@@ -7,6 +7,16 @@ import tkFont
 # +------+------+------+
 # | btn3 | btn3 | btn4 |
 # +-------------+------+
+def rounded_rect(canvas, x, y, w, h, c):
+    canvas.create_arc(x,   y,   x+2*c,   y+2*c,   start= 90, extent=90, style="arc")
+    canvas.create_arc(x+w-2*c, y+h-2*c, x+w, y+h, start=270, extent=90, style="arc")
+    canvas.create_arc(x+w-2*c, y,   x+w, y+2*c,   start=  0, extent=90, style="arc")
+    canvas.create_arc(x,   y+h-2*c, x+2*c,   y+h, start=180, extent=90, style="arc")
+    canvas.create_line(x+c, y,   x+w-c, y    )
+    canvas.create_line(x+c, y+h, x+w-c, y+h  )
+    canvas.create_line(x,   y+c, x,     y+h-c)
+    canvas.create_line(x+w, y+c, x+w,   y+h-c)
+
 def callback1():
     print "Izabrali ste Espresso!"
 def callback2():
@@ -16,12 +26,15 @@ def callback3():
 def callback4():
     print "Izabrali ste Čaj od nane!"        
 root = tk.Tk()
+
+
 # tkFont.BOLD == 'bold'
 helv36 = tkFont.Font(family='Helvetica', size=12, weight=tkFont.BOLD)
 photo1 = tk.PhotoImage(file="rsz_download.gif")
 photo2 = tk.PhotoImage(file="rsz_latteart.gif")
 photo3 = tk.PhotoImage(file="rsz_exps.gif")
 photo4 = tk.PhotoImage(file="rsz_tea-png-file.gif")
+
 
 btn1 = tk.Button(text='Espresso', compound=tk.LEFT, image=photo1, font=helv36, command=callback1)
 btn2 = tk.Button(text='Espresso sa mlekom', compound=tk.LEFT, image=photo2, font=helv36, command=callback2)
