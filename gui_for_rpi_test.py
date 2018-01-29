@@ -9,8 +9,8 @@ import tkFont
 import RPi.GPIO as GPIO
 
 GPIO.setmode(GPIO.BOARD)
-GPIO.setup(40, GPIO.OUT)
-GPIO.output(40, GPIO.LOW)
+GPIO.setup(8, GPIO.IN)
+GPIO.setup(19, GPIO.OUT)
 
 def callback00():
     print "Izabrali ste kratki espresso!"
@@ -96,4 +96,5 @@ btn15.grid(row=6, column=1, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn16.grid(row=7, column=1, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn17.grid(row=8, column=1, columnspan=1, sticky='EWNS', padx=10, pady=10)
 
+GPIO.cleanup()
 root.mainloop()
