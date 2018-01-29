@@ -10,7 +10,8 @@ import tkFont
 
 #GPIO.setmode(GPIO.BOARD)
 #GPIO.setup(8, GPIO.IN)
-#GPIO.setup(19, GPIO.OUT)
+#GPIO.setup(11, GPIO.OUT)
+#GPIO.input(11, FALSE)
 
 
 
@@ -57,16 +58,18 @@ def callbackSugarDown():
 root = tk.Tk()
 sugarCounter = tk.IntVar()
 root.resizable(width=False, height=False)
+root.configure(background="grey")
 
 drinkTextFont = tkFont.Font(family='Helvetica', size=8, weight=tkFont.BOLD)
 sugarTextFont = tkFont.Font(family='Helvetica', size=12, weight=tkFont.BOLD)
 photo00 = tk.PhotoImage(file="espresso38.gif")
 bckgrndBtn = '#CA9B00'
 
-labelInfoSugar = tk.Label(text="Pre nego što izaberete napitak regulišite količinu šećera sa - / +", font=sugarTextFont, wraplength=400)
+labelInfoSugar = tk.Label(text="Pre nego što izaberete napitak regulišite količinu šećera sa - / +", font=sugarTextFont, wraplength=400, background="grey" )
 labelSugarLevel = tk.Label(textvariable=sugarCounter, font=sugarTextFont)
 sugarBtnDown = tk.Button(height=1, width=3, text='-', borderwidth=5, font=drinkTextFont, command=callbackSugarDown)
-sugarBtnUp =tk.Button(height=1, width=3, text='+', borderwidth=5, font=drinkTextFont, command=callbackSugarUp)
+sugarBtnUp = tk.Button(height=1, width=3, text='+', borderwidth=5, font=drinkTextFont, command=callbackSugarUp)
+photoLabel = tk.Label(image = photo00)
 btn00 = tk.Button(text='Kratki espresso', compound=tk.LEFT, background=bckgrndBtn, font=drinkTextFont, borderwidth=7, command=callback00)
 btn01 = tk.Button(text='Produženi espresso', compound=tk.LEFT, background=bckgrndBtn, font=drinkTextFont, borderwidth=7, command=callback01)
 btn02 = tk.Button(text='Macchiato', compound=tk.LEFT, background=bckgrndBtn, font=drinkTextFont, borderwidth=7, command=callback02)
@@ -85,12 +88,13 @@ btn16 = tk.Button(text='Prazna čaša', compound=tk.LEFT, background=bckgrndBtn,
 btn17 = tk.Button(text='Kratki espresso sa čokoladom', compound=tk.LEFT, background=bckgrndBtn, font=drinkTextFont, borderwidth=7, command=callback17)
 
 root.rowconfigure((0,9), weight=1)  # make buttons stretch when
-root.columnconfigure((0,2), weight=1)  # when window is resized
+root.columnconfigure((0,4), weight=1)  # when window is resized
 
-labelInfoSugar.grid(row=0, column=0, columnspan=3)
-labelSugarLevel.grid(row=1, column=1, columnspan=1)
+labelInfoSugar.grid(row=0, column=0, columnspan=5)
+labelSugarLevel.grid(row=1, column=2, columnspan=1)
 sugarBtnDown.grid(row=1, column=0, columnspan=1)
-sugarBtnUp.grid(row=1, column=2, columnspan=1)
+sugarBtnUp.grid(row=1, column=4, columnspan=1)
+# photoLabel.grid(row=2, column=0, columnspan=1)
 btn00.grid(row=2, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn01.grid(row=3, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn02.grid(row=4, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
@@ -99,14 +103,14 @@ btn04.grid(row=6, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn05.grid(row=7, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn06.grid(row=8, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn07.grid(row=9, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn10.grid(row=2, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn11.grid(row=3, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn12.grid(row=4, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn13.grid(row=5, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn14.grid(row=6, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn15.grid(row=7, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn16.grid(row=8, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
-btn17.grid(row=9, column=2, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn10.grid(row=2, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn11.grid(row=3, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn12.grid(row=4, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn13.grid(row=5, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn14.grid(row=6, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn15.grid(row=7, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn16.grid(row=8, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
+btn17.grid(row=9, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 
 #GPIO.cleanup()
 root.mainloop()
