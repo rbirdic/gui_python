@@ -9,17 +9,17 @@ import tkFont
 #import RPi.GPIO as GPIO
 
 #GPIO.setmode(GPIO.BOARD)
-#GPIO.setup(8, GPIO.IN)
-#GPIO.setup(11, GPIO.OUT)
-#GPIO.input(11, False)
+#GPIO.setup(3, GPIO.IN)
+#GPIO.setup(40, GPIO.OUT)
+#GPIO.input(40, False)
 
 # while 1:
-#     if GPIO.input(8)==1 :
+#     if GPIO.input(3)==1 :
 #         print "Izabrali ste kratki espresso!"
 
 def callback00():
-    # print "Izabrali ste kratki espresso!"
-    #GPIO.input(11, True)
+    print "Izabrali ste kratki espresso!"
+    #GPIO.input(40, True)
 def callback01():
     print "Izabrali ste produženi espresso!"
 def callback02():
@@ -97,8 +97,8 @@ root.columnconfigure((0,4), weight=1)  # when window is resized
 
 labelInfoSugar.grid(row=0, column=0, columnspan=5)
 labelSugarLevel.grid(row=1, column=2, columnspan=1)
-sugarBtnDown.grid(row=1, column=0, columnspan=1)
-sugarBtnUp.grid(row=1, column=4, columnspan=1)
+sugarBtnDown.grid(row=1, column=0, columnspan=2)
+sugarBtnUp.grid(row=1, column=4, columnspan=2)
 # photoLabel.grid(row=2, column=0, columnspan=1)
 btn00.grid(row=2, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn01.grid(row=3, column=0, columnspan=1, sticky='EWNS', padx=10, pady=10)
