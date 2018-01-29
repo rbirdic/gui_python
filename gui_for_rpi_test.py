@@ -13,9 +13,9 @@ import tkFont
 #GPIO.setup(11, GPIO.OUT)
 #GPIO.input(11, False)
 
-while 1:
-    if GPIO.input(8)==1 :
-        print "Izabrali ste kratki espresso!"
+# while 1:
+#     if GPIO.input(8)==1 :
+#         print "Izabrali ste kratki espresso!"
 
 def callback00():
     # print "Izabrali ste kratki espresso!"
