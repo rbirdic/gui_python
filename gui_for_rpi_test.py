@@ -11,12 +11,15 @@ import tkFont
 #GPIO.setmode(GPIO.BOARD)
 #GPIO.setup(8, GPIO.IN)
 #GPIO.setup(11, GPIO.OUT)
-#GPIO.input(11, FALSE)
+#GPIO.input(11, False)
 
-
+while 1:
+    if GPIO.input(8)==1 :
+        print "Izabrali ste kratki espresso!"
 
 def callback00():
-    print "Izabrali ste kratki espresso!"
+    # print "Izabrali ste kratki espresso!"
+    #GPIO.input(11, True)
 def callback01():
     print "Izabrali ste produženi espresso!"
 def callback02():
@@ -57,8 +60,10 @@ def callbackSugarDown():
         # labelSugarLevel(textvariable=sugarCounter).pack()            
 root = tk.Tk()
 sugarCounter = tk.IntVar()
+sugarCounter.set(2)
 root.resizable(width=False, height=False)
 root.configure(background="grey")
+# root.geometry("400x400") 
 
 drinkTextFont = tkFont.Font(family='Helvetica', size=8, weight=tkFont.BOLD)
 sugarTextFont = tkFont.Font(family='Helvetica', size=12, weight=tkFont.BOLD)
@@ -66,7 +71,7 @@ photo00 = tk.PhotoImage(file="espresso38.gif")
 bckgrndBtn = '#CA9B00'
 
 labelInfoSugar = tk.Label(text="Pre nego što izaberete napitak regulišite količinu šećera sa - / +", font=sugarTextFont, wraplength=400, background="grey" )
-labelSugarLevel = tk.Label(textvariable=sugarCounter, font=sugarTextFont)
+labelSugarLevel = tk.Label(textvariable=sugarCounter, font=sugarTextFont, background="grey")
 sugarBtnDown = tk.Button(height=1, width=3, text='-', borderwidth=5, font=drinkTextFont, command=callbackSugarDown)
 sugarBtnUp = tk.Button(height=1, width=3, text='+', borderwidth=5, font=drinkTextFont, command=callbackSugarUp)
 photoLabel = tk.Label(image = photo00)
