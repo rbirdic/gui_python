@@ -6,20 +6,23 @@ except ImportError:
   import tkinter as Tkinter   # Python 3
   import tkinter.ttk as ttk
 import tkFont
-#import RPi.GPIO as GPIO
+import RPi.GPIO as GPIO
 
-#GPIO.setmode(GPIO.BOARD)
-#GPIO.setup(3, GPIO.IN)
-#GPIO.setup(40, GPIO.OUT)
-#GPIO.input(40, False)
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(3, GPIO.IN)
+GPIO.setup(40, GPIO.OUT)
 
-# while 1:
-#     if GPIO.input(3)==1 :
-#         print "Izabrali ste kratki espresso!"
+GPIO.output(40, False)
 
+##while GPIO.input(3) == 1:
+##    print "Izabrali ste kratki espresso11111!"
 def callback00():
-    print "Izabrali ste kratki espresso!"
-    #GPIO.input(40, True)
+    #print "Izabrali ste kratki espresso!"
+    GPIO.output(40, True)
+    if GPIO.input(3)==1 :
+        print "Izabrali ste kratki espresso11111!"
+
 def callback01():
     print "Izabrali ste produženi espresso!"
 def callback02():
