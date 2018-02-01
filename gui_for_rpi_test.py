@@ -8,56 +8,125 @@ except ImportError:
 import tkFont
 import RPi.GPIO as GPIO
 
+drinkPins = [3,5,7,8,10,11,12,
+           13,15,16,18,19,21,
+           22,23,24,26,29,31,
+           32,33,35,36,37,38,40]
+
 GPIO.setmode(GPIO.BOARD)
 GPIO.setwarnings(False)
-GPIO.setup(3, GPIO.IN)
-GPIO.setup(40, GPIO.OUT)
+GPIO.setup(3, GPIO.OUT)   # pin 1
+GPIO.setup(5, GPIO.OUT)   # pin 2
+GPIO.setup(7, GPIO.OUT)   # pin 3
+GPIO.setup(8, GPIO.OUT)   # pin 4
+GPIO.setup(10, GPIO.OUT)  # pin 5
+GPIO.setup(11, GPIO.OUT)  # pin 6
+GPIO.setup(12, GPIO.OUT)  # pin 7
+GPIO.setup(13, GPIO.OUT)  # pin 8
+GPIO.setup(15, GPIO.OUT)  # pin 9
+GPIO.setup(16, GPIO.OUT)  # pin 10
 
-GPIO.output(40, False)
+
+GPIO.output(3, False)
+GPIO.output(5, False)
+GPIO.output(7, False)
+GPIO.output(8, False)
+GPIO.output(10, False)
+GPIO.output(11, False)
+GPIO.output(12, False)
+GPIO.output(13, False)
+GPIO.output(15, False)
+GPIO.output(16, False)
 
 ##while GPIO.input(3) == 1:
 ##    print "Izabrali ste kratki espresso11111!"
-def callback00():
-    #print "Izabrali ste kratki espresso!"
-    GPIO.output(40, True)
-    if GPIO.input(3)==1 :
-        print "Izabrali ste kratki espresso11111!"
+def callback00():  # 1 & 7
+    print "Izabrali ste kratki espresso!"
+    GPIO.output(3, True)
+    GPIO.output(12, True)
+    # if GPIO.input(3)==1 :
+    #     print "Izabrali ste kratki espresso11111!"
 
-def callback01():
+def callback01():   # 2 & 7
     print "Izabrali ste produženi espresso!"
-def callback02():
+    GPIO.output(5, True)
+    GPIO.output(12, True)
+
+def callback02():   # 3 & 7
     print "Izabrali ste macchiato!"
-def callback03():
+    GPIO.output(7, True)
+    GPIO.output(12, True)
+
+def callback03():   # 4 & 7
     print "Izabrali ste cappucchino!"
-def callback04():
+    GPIO.output(8, True)
+    GPIO.output(12, True)
+
+def callback04():   # 1 & 9
     print "Izabrali ste cappucchino sa čokoladom!"
-def callback05():
+    GPIO.output(3, True)
+    GPIO.output(15, True)
+
+def callback05():   # 2 & 9
     print "Izabrali ste Nes espresso!"
-def callback06():
+    GPIO.output(5, True)
+    GPIO.output(15, True)
+
+def callback06():   # 3 & 9
     print "Izabrali ste Nes macchiato!"
-def callback07():
+    GPIO.output(7, True)
+    GPIO.output(15, True)
+
+def callback07():   # 4 & 9
     print "Izabrali ste Nes cappucchino!"
-def callback10():
+    GPIO.output(8, True)
+    GPIO.output(15, True)
+
+def callback10():   # 1 & 8
     print "Izabrali ste toplu čokoladu!"
-def callback11():
+    GPIO.output(3, True)
+    GPIO.output(13, True)
+
+def callback11():   # 2 & 8
     print "Izabrali ste jaču čokoladu!"
-def callback12():
+    GPIO.output(5, True)
+    GPIO.output(13, True)
+
+def callback12():   # 3 & 8
     print "Izabrali ste čokolada sa mlekom!"
-def callback13():
+    GPIO.output(7, True)
+    GPIO.output(13, True)
+
+def callback13():   # 4 & 8
     print "Izabrali ste čaj!"
-def callback14():
+    GPIO.output(8, True)
+    GPIO.output(13, True)
+
+def callback14():   # 1 & 10
     print "Izabrali ste mleko!"
-def callback15():
+    GPIO.output(3, True)
+    GPIO.output(16, True)
+
+def callback15():   # 2 & 10
     print "Izabrali ste belu kafu!"
-def callback16():
+    PIO.output(5, True)
+    GPIO.output(16, True)
+
+def callback16():   # 3 & 10
     print "Izabrali ste praznu čašu!"
-def callback17():
+    PIO.output(7, True)
+    GPIO.output(16, True)
+
+def callback17():   # 4 & 10
     print "Izabrali ste kratki espresso sa čokoladom!"
-def callbackSugarUp():
+    PIO.output(8, True)
+    GPIO.output(16, True)
+
+def callbackSugarUp():  # 1 & 5
     if (sugarCounter.get() < 5) and (sugarCounter.get() >= 0):
         sugarCounter.set(sugarCounter.get() + 1)
         # labelSugarLevel(textvariable=sugarCounter).pack()
-def callbackSugarDown():
+def callbackSugarDown(): # 1 & 6
     if (sugarCounter.get() <= 5) and (sugarCounter.get() > 0):
         sugarCounter.set(sugarCounter.get() - 1)
         # labelSugarLevel(textvariable=sugarCounter).pack()            
@@ -120,5 +189,5 @@ btn15.grid(row=7, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn16.grid(row=8, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn17.grid(row=9, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 
-#GPIO.cleanup()
+GPIO.cleanup()
 root.mainloop()
