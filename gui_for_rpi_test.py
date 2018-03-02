@@ -7,12 +7,14 @@ except ImportError:
   import tkinter.ttk as ttk
 import tkFont
 import RPi.GPIO as GPIO
+import time
 
 GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
 
-pinsInit[11, 13, 15, 35, 37]
+pinsInit = [11, 13, 15, 35, 37]
 
-GPIO.setup(pinsInit, GPIO.OUT, initial = GPIO.Low)
+GPIO.setup(pinsInit, GPIO.OUT, initial = GPIO.LOW)
 
 # GPIO.setmode(GPIO.BOARD)
 # GPIO.setwarnings(False)
@@ -43,9 +45,12 @@ GPIO.setup(pinsInit, GPIO.OUT, initial = GPIO.Low)
 ##    print "Izabrali ste kratki espresso11111!"
 def callback00():  # 1 & 7 ---- 1 
     print "Izabrali ste kratki espresso!"
-    pinsLow[11, 35, 37]
-    pinsHigh[13, 15]
-    sleep(20)
+    pinsLow = [11, 35, 37]
+    pinsHigh = [13, 15]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
     # GPIO.output(3, True)
     # GPIO.output(12, True)
@@ -56,120 +61,164 @@ def callback01():   # 2 & 7 ---- 3
     print "Izabrali ste produženi espresso!"
     # GPIO.output(5, True)
     # GPIO.output(12, True)
-    pinsLow[11, 13, 35, 37]
-    pinsHigh[15]
-    sleep(20)
+    pinsLow = [11, 13, 35, 37]
+    pinsHigh = [15]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback02():   # 3 & 7 ---- 5
     print "Izabrali ste macchiato!"
     # GPIO.output(7, True)
     # GPIO.output(12, True)
-    pinsLow[13, 35, 37]
-    pinsHigh[11, 15]
-    sleep(20)
+    pinsLow = [13, 35, 37]
+    pinsHigh = [11, 15]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback03():   # 4 & 7 ---- 7
     print "Izabrali ste cappucchino!"
     # GPIO.output(8, True)
     # GPIO.output(12, True)
-    pinsLow[15, 37]
-    pinsHigh[11, 13, 35]
-    sleep(20) 
+    pinsLow = [35, 37]
+    pinsHigh = [11, 13, 15]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True) 
 
 def callback04():   # 1 & 9 ---- 9
     print "Izabrali ste cappucchino sa čokoladom!"
     # GPIO.output(3, True)
     # GPIO.output(15, True)
-    pinsLow[35, 37]
-    pinsHigh[11, 13, 15]
-    sleep(20)   
+    pinsLow = [15, 37]
+    pinsHigh = [11, 13, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)  
 
 def callback05():   # 2 & 9 ---- 11
     print "Izabrali ste Nes espresso!"
     # GPIO.output(5, True)
     # GPIO.output(15, True)
-    pinsLow[13, 15, 37]
-    pinsHigh[11, 35]
-    sleep(20)
+    pinsLow = [13, 15, 37]
+    pinsHigh = [11, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback06():   # 3 & 9 ---- 13
     print "Izabrali ste Nes macchiato!"
     # GPIO.output(7, True)
     # GPIO.output(15, True)
-    pinsLow[11, 13, 15, 37]
-    pinsHigh[35]
-    sleep(20) 
+    pinsLow = [11, 13, 15, 37]
+    pinsHigh = [35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback07():   # 4 & 9 ---- 15
     print "Izabrali ste Nes cappucchino!"
     # GPIO.output(8, True)
     # GPIO.output(15, True)
-    pinsLow[11, 15, 37]
-    pinsHigh[13, 35]
-    sleep(20)
+    pinsLow = [11, 15, 37]
+    pinsHigh = [13, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback10():   # 1 & 8 ---- 2
     print "Izabrali ste toplu čokoladu!"
     # GPIO.output(3, True)
     # GPIO.output(13, True)
-    pinsLow[13, 15, 35, 37]
-    pinsHigh[11]
-    sleep(20)
+    pinsLow = [13, 15, 35, 37]
+    pinsHigh = [11]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback11():   # 2 & 8 ---- 4
     print "Izabrali ste jaču čokoladu!"
     # GPIO.output(5, True)
     # GPIO.output(13, True)
-    pinsLow[11, 13, 15, 35, 37]
-    sleep(20)
+    pinsLow = [11, 13, 15, 35, 37]
+    GPIO.output(pinsLow, False)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback12():   # 3 & 8 ---- 6
     print "Izabrali ste čokolada sa mlekom!"
     # GPIO.output(7, True)
     # GPIO.output(13, True)
-    pinsLow[11, 15, 35, 37]
-    pinsHigh[13]
-    sleep(20)
+    pinsLow = [11, 15, 35, 37]
+    pinsHigh = [13]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback13():   # 4 & 8 ---- 8
     print "Izabrali ste čaj!"
     # GPIO.output(8, True)
     # GPIO.output(13, True)
-    pinsLow[15, 35, 37]
-    pinsHigh[11, 13]
-    sleep(20)
+    pinsLow = [15, 35, 37]
+    pinsHigh = [11, 13]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback14():   # 1 & 10 ---- 10
     print "Izabrali ste mleko!"
     # GPIO.output(3, True)
     # GPIO.output(16, True)
-    pinsLow[37]
-    pinsHigh[11, 13, 15, 35]
-    sleep(20)
+    pinsLow = [37]
+    pinsHigh = [11, 13, 15, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback15():   # 2 & 10 ---- 12
     print "Izabrali ste belu kafu!"
     # PIO.output(5, True)
     # GPIO.output(16, True)
-    pinsLow[13, 37]
-    pinsHigh[11, 15, 35]
-    sleep(20)
+    pinsLow = [13, 37]
+    pinsHigh = [11, 15, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback16():   # 3 & 10 ---- 14
     print "Izabrali ste praznu čašu!"
     # PIO.output(7, True)
     # GPIO.output(16, True)
-    pinsLow[11, 13, 37]
-    pinsHigh[15, 35]
-    sleep(20)
+    pinsLow = [11, 13, 37]
+    pinsHigh = [15, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callback17():   # 4 & 10 ---- 16
     print "Izabrali ste kratki espresso sa čokoladom!"
     # PIO.output(8, True)
     # GPIO.output(16, True)
-    pinsLow[11, 37]
-    pinsHigh[13, 15, 35]
-    sleep(20)
+    pinsLow = [11, 37]
+    pinsHigh = [13, 15, 35]
+    GPIO.output(pinsLow, False)
+    GPIO.output(pinsHigh, True)
+    time.sleep(10)
+    GPIO.output(37, True)
 
 def callbackSugarUp():  # 1 & 5
     if (sugarCounter.get() < 5) and (sugarCounter.get() >= 0):
@@ -238,5 +287,5 @@ btn15.grid(row=7, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn16.grid(row=8, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 btn17.grid(row=9, column=4, columnspan=1, sticky='EWNS', padx=10, pady=10)
 
-GPIO.cleanup()
+#GPIO.cleanup()
 root.mainloop()
